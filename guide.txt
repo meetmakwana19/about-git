@@ -1,0 +1,62 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~STEP 0.1 ( 1st time setup)(did to let people know that these things are done by me and my email)
+Meet@LAPTOP-96UORJI6 MINGW64 ~/My VScode/Web_Dev/75-79_88_Dance_Website
+$ git config --global user.name Meet
+~~~~~~~~~~~~~~~~~~~~~git g~~~~~STEP 0.2
+Meet@LAPTOP-96UORJI6 MINGW64 ~/My VScode/Web_Dev/75-79_88_Dance_Website
+$git config --global user.email "meetmakwana20.@gmail.com"
+
+~~~~~~~~~~~To know it is set up or not
+Meet@LAPTOP-96UORJI6 MINGW64 ~
+$ git config --global user.name
+Meet
+
+Meet@LAPTOP-96UORJI6 MINGW64 ~
+$ git config --global user.email
+meetmakwana20.@gmail.com
+
+-----------------------------------
+*TO RESTORE FILES FROM LAST COMMIT
+USED TO GET BACK THE LAST VERSION OF THE FILE IF SOMEONE HAS WRONGLY EDITED AND SAVED IT.
+ESSENTIALLY MATCHING WITH THE LAST COMMIT !!
+$ git checkout `filename`
+
+TO MATCH ALL THE FILES WITH LAST COMMIT AND CHANGE AND THEM ACCORDING TO THE LAST COMMIT !!
+$ git checkout -f
+
+-----------------------------------
+*LOGS
+TO GET LOG OF ALL OUR COMMITS
+$ git log
+
+TO FILTER OUT LOGS OF COMMITS
+(FOR EG. TO GET LAST 2 COMMITS, it also shows the changes)
+$ git log -p -2
+(press "q" to exit)
+
+-----------------------------------
+*COMPARISON
+WILL COMPARE AND SHOW THE DIFFERENCES BETWEEN THE CURRENT FILES(WORKING TREE) AND STAGED FILES
+$ git diff
+
+WILL COMPARE AND SHOW THE DIFFERENCES BETWEEN THE LAST COMMIT AND STAGED FILES
+$ git diff --staged
+
+------------------------------------
+TO DIRECTLY COMMIT BY SKIPPING STAGING AREA
+$ git commit -a -m "Skipped staging area and commited directly"
+
+------------------------------------
+WILL REMOVE THE FILE FROM LOCAL STORAGE & STAGING AREA
+$ git rm `filename`
+
+WILL REMOVE THE FILE FROM STAGING AREA ONLY, LOCAL ONE WILL REMAIN THE SAME
+$ git rm --cached `filename`
+
+------------------------------------
+SHORTHAND FOR STATUS
+$ git status -s
+MM  about.html(this will be in green meaning modified in staging area)(2nd M will be in red meaning modified in working tree)
+ M site.html (this will be in red meaning modified in working tree )
+?? waste.html
+
+------------------------------------
