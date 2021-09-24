@@ -14,6 +14,76 @@ Meet@LAPTOP-96UORJI6 MINGW64 ~
 $ git config --global user.email
 meetmakwana20.@gmail.com
 
+~~~~~~~~~~~~~~~~~~~~~~~~~STEP 1 
+
+$touch .gitignore
+-----------------"touch" creates a new blank file  of .gitignore
+
+edit the .gitignore file and add the name of the folder which we dont want to upload 
+
+~~~~~~~~~~~~~~~~~~~~~~~STEP 2
+> FYI : If we want to get a repo then 2 options,
+	1. git init(it initializes from start)
+	OR
+	2. clone (it clones a repo we want and clones it's whole data from server)
+
+$git init
+
+(will create a .git file, keep hidden files enable to see it)
+
+~~~~~~~~~~~~~~~~~~~~~~STEP 3
+> Very imp Flow of git - 
+
+	    Untracked file(On local device)----> Staged(filewhich we wish to put on git) <---|
+						    |					     |
+						    |	{ Commit }			     |
+						    v					     |
+					Unmodified file on git				     |
+			(Goes on git which we can edit/remove)[snapshot taken by git]	     |
+						    |					     |
+						    |  (If edited)			     |
+						    v					     |
+				          Modified file on git >------(Back to staging)------|
+
+$ git add .
+(to put all the contents at staging area, . means all)
+
+OR
+$ git add `filename`
+( if dont want to put all files then use syntax " git add `filename` ")
+
+OR
+$ git add -A
+( if want to put all the files at staging then "git add -A"
+
+*can check status now by 
+$ git status
+
+~~~~~~~~~~~~~~~~~~~~~~STEP 4
+
+--------git commit means taking a snapshot 
+----------so git add and git commit makes a snapshot associated to the changes we made
+----------but right now nothing is added to my repo so using "Initial commit"
+
+$ git commit ~~~~~~~~~~~~~~~~~~~~> if this command is executed then an editor will open then press "i" to edit and write the message "Initial commit" and then press "Esc" key and then type ":wq" to save and exit the file
+
+-------ALTERNATE EASY METHOD --------------
+$ git commit -m "Initial commit"
+
+-------I prefer :
+$ git commit -a -m "msg"
+(skips staging and directly commits)
+
+*********************************************Commit done, now Push remaining********************************************
+
+~~~~~~~~~~~~~~~~~~~~~~STEP 4
+
+To finally push the "master" branch on "origin" url 
+
+$ git push -u origin master
+
+(If once push -u origin is used then next time we just write "git push" which will by default push it the branch which was last commanded with "-u")
+
 -----------------------------------
 *TO RESTORE FILES FROM LAST COMMIT
 USED TO GET BACK THE LAST VERSION OF THE FILE IF SOMEONE HAS WRONGLY EDITED AND SAVED IT.
@@ -168,5 +238,5 @@ CLONE COMMAND
    where https is the link of repo to be cloned and "meet" is the folder name where the repo to be closed inside our opened folder.
 
    $ git clone https://github.com/meetmakwana19/To-Do-List.git
-   *If "meet" folder name not given then a folder of repo's name will be created .
+   *If "meet" folder name not given then a folder of repo's name will be created.
 
