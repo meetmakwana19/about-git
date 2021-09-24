@@ -84,6 +84,9 @@ $ git branch `name_of_branch`
 TO KNOW THE NAMES OF ALL BRANCHES:
 $ git branch
 
+SHORTHAND FOR CREATING AND ENTERING(SWITCHING TO IT) THE BRANCH AT THE SAME TIME
+$ git checkout -b newBranch
+
 TO SWITCH TO ANOTHER BRANCH
 Meet@LAPTOP-96UORJI6 MINGW64 ~/OneDrive/Desktop/New folder (master)
 $ git checkout feature1
@@ -97,3 +100,46 @@ On branch feature1
 nothing to commit, working tree clean
 
 **Keep the file open and see the changes when switching between branches.
+
+---------------------------------------------------------------------------------------------------------------
+				GITHUB
+---------------------------------------------------------------------------------------------------------------
+
+Make a repo on github with no files(no readme, etc)
+
+ON GIT BASH : TO CONNECT TO GITHUB'S REMOTE REPO WITH OUR LOCAL REPO
+$ git remote add origin git@github.com:meetmakwana19/about-git.git
+MEANING A REMOTE NAMED "origin" IS ADDED AND OUR URL CAN BE CALLED AS "origin"
+
+TO SEE REMOTE
+$ git remote
+OUTPUT:
+origin
+
+TO SEE URL 
+$git remote -v
+origin  git@github.com:meetmakwana19/about-git.git (fetch)
+origin  git@github.com:meetmakwana19/about-git.git (push)
+
+------------------------------------
+NOW GITHUB IS NNOT LINKED WITH OUR PC 
+SO TO PUSH THE REPPO TO GITHUB DO THE FOLLOWING 
+
+1. Go to https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?utm_source=Blog to generate new ssh key.
+
+2. Paste the text below, substituting in your GitHub email address.
+   $ ssh-keygen -t ed25519 -C "your_email@example.com"
+
+3. To generate Agent pid
+   $ eval "$(ssh-agent -s)"
+
+4. To read the ssh key I went to the directory given by preious eval command and opened .pub file with notepad
+
+5. Copied the ssh key and added it as a new ssh key on Github's 
+   Acc settings > SSH Keys > New SSH Key(green button)
+
+6. Went to repo's "Code" tab and clicked on "Code v" green button and copied ssh  url 
+
+7. Copied the SSH url git@github.com:meetmakwana19/about-git.git
+
+8. $ git remote set-url origin git@github.com:meetmakwana19/about-git.git

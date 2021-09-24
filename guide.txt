@@ -143,3 +143,30 @@ SO TO PUSH THE REPPO TO GITHUB DO THE FOLLOWING
 7. Copied the SSH url git@github.com:meetmakwana19/about-git.git
 
 8. $ git remote set-url origin git@github.com:meetmakwana19/about-git.git
+
+9. To finally push the "master" branch on "origin" url 
+
+   $ git push -u origin master
+
+   (If once push -u origin is used then next time we just write "git push" which will by default push it the branch which was last commanded with "-u")
+
+**************To push another branches on GitHub too,
+1. $ git checkout newBranch
+
+2. $ git push -u origin 
+
+------------------------------------
+CLONE COMMAND
+
+1. Making a new folder and opening git bash over there to clone into that folder.
+
+2. Will go to any public repo on Github and under code tab will copy the https link.
+
+3. In that folder's git bash will write 
+
+   $ git clone https://github.com/meetmakwana19/To-Do-List.git meet
+   where https is the link of repo to be cloned and "meet" is the folder name where the repo to be closed inside our opened folder.
+
+   $ git clone https://github.com/meetmakwana19/To-Do-List.git
+   *If "meet" folder name not given then a folder of repo's name will be created .
+
