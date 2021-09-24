@@ -107,5 +107,16 @@ nothing to commit, working tree clean
 
 Make a repo on github with no files(no readme, etc)
 
-ON GIT BASH TO CONNECT TO GITHUB'S REMOTE REPO
+ON GIT BASH : TO CONNECT TO GITHUB'S REMOTE REPO WITH OUR LOCAL REPO
 $ git remote add origin git@github.com:meetmakwana19/about-git.git
+MEANING A REMOTE NAMED "origin" IS ADDED AND OUR URL CAN BE CALLED AS "origin"
+
+TO SEE REMOTE
+$ git remote
+OUTPUT:
+origin
+
+TO SEE URL 
+$git remote -v
+origin  git@github.com:meetmakwana19/about-git.git (fetch)
+origin  git@github.com:meetmakwana19/about-git.git (push)

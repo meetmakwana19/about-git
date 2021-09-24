@@ -84,6 +84,9 @@ $ git branch `name_of_branch`
 TO KNOW THE NAMES OF ALL BRANCHES:
 $ git branch
 
+SHORTHAND FOR CREATING AND ENTERING(SWITCHING TO IT) THE BRANCH AT THE SAME TIME
+$ git checkout -b newBranch
+
 TO SWITCH TO ANOTHER BRANCH
 Meet@LAPTOP-96UORJI6 MINGW64 ~/OneDrive/Desktop/New folder (master)
 $ git checkout feature1
@@ -97,3 +100,12 @@ On branch feature1
 nothing to commit, working tree clean
 
 **Keep the file open and see the changes when switching between branches.
+
+---------------------------------------------------------------------------------------------------------------
+				GITHUB
+---------------------------------------------------------------------------------------------------------------
+
+Make a repo on github with no files(no readme, etc)
+
+ON GIT BASH TO CONNECT TO GITHUB'S REMOTE REPO
+$ git remote add origin git@github.com:meetmakwana19/about-git.git
