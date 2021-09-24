@@ -96,3 +96,4 @@ $ git status
 On branch feature1
 nothing to commit, working tree clean
 
+**Keep the file open and see the changes when switching between branches.
