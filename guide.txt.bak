@@ -60,15 +60,3 @@ MM  about.html(this will be in green meaning modified in staging area)(2nd M wil
 ?? waste.html
 
 ------------------------------------
-.gitignore file ignores all the files which are even in the the folders
-
-TO IGNORE ALL THE FILE-TYPES(.log) ADD THIS IS IN .gitignore
-eg: (.log)
-*.log
-
-TO IGNORE A FOLDER USE A FORWAD SLASH
-`folder_name`/
-
-Just commited,
-$ git commit -a -m "Ignored some files nd added gitignore"
-
