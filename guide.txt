@@ -62,13 +62,37 @@ MM  about.html(this will be in green meaning modified in staging area)(2nd M wil
 ------------------------------------
 .gitignore file ignores all the files which are even in the the folders
 
-TO IGNORE ALL THE FILE-TYPES(.log) ADD THIS IS IN .gitignore
-eg: (.log)
-*.log
+SHOULD BE KNOWN : 
+1. TO IGNORE ALL THE FILE-TYPES(.log) ADD THIS IS IN .gitignore
+   eg: (.log)
+   *.log
 
-TO IGNORE A FOLDER USE A FORWAD SLASH
-`folder_name`/
+2. TO IGNORE A FOLDER USE A FORWAD SLASH
+   `folder_name`/
 
 Just commited,
-$ git commit -a -m "Ignored some files nd added gitignore"
+    $ git commit -a -m "Ignored some files nd added gitignore"
+
+------------------------------------
+BRANCH = Used to make a copy to work on differently
+
+BY DEFAULT, IT IS BRANCH "MASTER".
+
+TO CREATE A BRANCH
+$ git branch `name_of_branch`
+
+TO KNOW THE NAMES OF ALL BRANCHES:
+$ git branch
+
+TO SWITCH TO ANOTHER BRANCH
+Meet@LAPTOP-96UORJI6 MINGW64 ~/OneDrive/Desktop/New folder (master)
+$ git checkout feature1
+
+Switched to branch 'feature1'
+
+Meet@LAPTOP-96UORJI6 MINGW64 ~/OneDrive/Desktop/New folder (feature1)
+$ git status
+
+On branch feature1
+nothing to commit, working tree clean
 
