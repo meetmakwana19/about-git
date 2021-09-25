@@ -1,0 +1,17 @@
+1. (Staging)
+git add -A
+
+2. (Commiting)
+git commit -m "msg"
+
+3. (Linking local repository to the remote one)
+git remote add origin "https_limk_of_remote_repo"
+
+can do these,
+
+git remote
+
+git remote -v
+
+4. (Finally pushing it to "origin")
+git push -u origin
