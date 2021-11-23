@@ -68,16 +68,16 @@ git init
 
  Very imp Flow of git -
 
- 	    Untracked file(On local device)----> Staged(filewhich we wish to put on git) <---|
-						    |					                                         |
-						    |	{ Commit }			                                     |
-						    v					                                         |
-					Unmodified file on git				                                 |
-			(Goes on git which we can edit/remove)[snapshot taken by git]	             |
-						    |					                                         |
-						    |  (If edited)			                                     |
-						    v					                                         |
-				          Modified file on git >------(Back to staging)------------------|
+	    Untracked file(On local device)----> Staged(filewhich we wish to put on git) <---|
+						    |					     |
+						    |	{ Commit }			     |
+						    v					     |
+					Unmodified file on git				     |
+			(Goes on git which we can edit/remove)[snapshot taken by git]	     |
+						    |					     |
+						    |  (If edited)			     |
+						    v					     |
+				          Modified file on git >------(Back to staging)------|
 
 To put all the contents at staging area and . means all
 
