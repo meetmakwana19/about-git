@@ -9,6 +9,7 @@ Please checkout just the guide.txt and simple-steps.txt file as others were just
 The commands written inside the text files are UNIX based git commands executed in git bash command line.
 
 
+
 # Git Cheatsheet 
 
 All the following steps are prefered to be followed and executed on 'Git Bash' after installing it on your machine.
@@ -31,12 +32,13 @@ To know it is set up or not :
 
 ```bash
 git config --global user.name
-(your username as output)
 ```
+```(your username as output)```
+
 ```bash
 git config --global user.email
-(your email as output)
 ```
+```(your email as output)```
 
 
 
