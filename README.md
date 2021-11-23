@@ -10,6 +10,7 @@ The commands written inside the text files are UNIX based git commands executed 
 
 
 
+
 # Git Cheatsheet 
 
 All the following steps are prefered to be followed and executed on 'Git Bash' after installing it on your machine.
@@ -104,4 +105,40 @@ git add -A
 ```bash
 git status
 ```
+
+
+## Step 4
+
+- ```git commit``` means taking a snapshot 
+
+- So ```git add``` and ```git commit``` makes a snapshot associated to the changes we made
+
+- But right now nothing is added to my repo so using "Initial commit"
+
+If this command is executed then an editor will open then press ```i``` to edit and write the message ```Initial commit``` and then press ```Esc``` key and then type ```:wq``` to save and exit the file.
+
+```bash
+git commit
+```
+- ALTERNATE EASY METHOD
+
+```bash
+git commit -m "Initial commit"
+```
+
+- I prefer this as it skips staging and directly commits :
+
+```bash
+git commit -a -m "msg"
+```
+
+## Commit done 🎉 , now Push remaining 
+
+To finally push the "master" branch on "origin" url 
+
+```bash
+git push -u origin master
+```
+
+- If once ```push -u origin``` is used then next time we just write ```git push``` which will by default push it the branch which was last commanded with ```-u```
 
