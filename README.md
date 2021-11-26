@@ -12,11 +12,16 @@ The commands written inside the text files are UNIX based git commands executed 
 
 
 
+
 # Git Cheatsheet 
 
 All the following steps are prefered to be followed and executed on 'Git Bash' after installing it on your machine.
 
+To check your git version
 
+```bash
+git --version
+```
 ## 1st time git setup
 ### STEP 0.1 
 
@@ -83,25 +88,31 @@ git init
 						    v					     |
 				          Modified file on git >------(Back to staging)------|
 
-To put all the contents at staging area and . means all
+To put all the contents at staging area and ```.``` means staging all new and modified items excluding deleted ones.
 
 ```bash
 git add .  
 ```
 
-OR If dont want to put all files then use the following syntax 
+If dont want to put all files then use the following syntax 
 
 ```bash
 git add filename
 ```
 
-OR If want to put all the files at staging then, 
+If want to put **all the files** of the directory at staging then, 
 
 ```bash
 git add -A
 ```
 
-👉🏻 Can check status now by 
+If want to put only the modified and deleted items at staging then,
+
+```bash
+git add -u
+```
+
+👉🏻 Can check status ✔ now by 
 
 ```bash
 git status
@@ -191,6 +202,8 @@ SO TO PUSH THE LOCAL REPO TO GITHUB DO THE FOLLOWING :**
    ```bash
    eval "$(ssh-agent -s)"
    ```
+
+If things are not working out [check this](https://www.codewithharry.com/videos/git-tut-beginners-hindi-5)
 
 4. To read the ssh key I went to the directory given by previous eval command and opened .pub file with notepad
 
@@ -314,7 +327,33 @@ nothing to commit, working tree clean
 
 **Keep the file open and see the changes when switching between branches.
 
-### 6) Logs
+### 6) Playing with branches
+
+To push to a specific branch to a remote names ```origin```
+
+```bash
+git push origin branch_name 
+```
+
+To merge a specific branch with another branch say ```master``` branch then switch (```checkout```) to it and do the following
+
+```bash
+git merge specific_branch
+```
+
+Delete a specific branch from the local repository
+
+```bash
+git branch -d specific_branch
+```
+
+Delete a specific branch from the remote ```origin```
+
+```bash
+git push origin --delete specific_branch
+```
+
+### 7) Logs
 
 TO GET LOG OF ALL OUR COMMITS
 ```bash
@@ -329,7 +368,7 @@ git log -p -2
 ```
 (press ```q``` to exit from the log viewer)
 
-### 7)Comparison
+### 8)Compare changes 
 
 WILL COMPARE AND SHOW THE DIFFERENCES BETWEEN THE CURRENT FILES(WORKING TREE) AND STAGED FILES
 ```bash
@@ -341,9 +380,9 @@ WILL COMPARE AND SHOW THE DIFFERENCES BETWEEN THE LAST COMMIT AND STAGED FILES
 git diff --staged
 ```
 
-### 8) .gitignore
+### 9) .gitignore
 
-```.gitignore``` file ignores all the files which are even in the the folders
+```.gitignore``` file has the list of all the files and folders which we dont want to track with git.
 
 SHOULD BE KNOWN : 
 1. TO IGNORE ALL THE FILE-TYPES(.log), ADD THIS IS IN .gitignore
@@ -357,7 +396,7 @@ SHOULD BE KNOWN :
    `folder_name`/
    ```
 
-### 9) Restore files
+### 10) Restore files
 
 To restore files from last commit
 Used to get back the last version of the file if someone has wrongly edited and saved it.
@@ -370,6 +409,9 @@ To match all the files with last commit and change and them according to the las
 ```bash
 git checkout -f
 ```
+
+
+
 
 
 
