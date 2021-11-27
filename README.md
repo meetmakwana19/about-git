@@ -410,6 +410,19 @@ To match all the files with last commit and change and them according to the las
 git checkout -f
 ```
 
+### 11) Get the remote repository to local PC
+
+Can make a new folder and run ```git init``` by opening git bash in that folder.
+
+```bash
+git clone https_link
+```
+Or
+
+~~~bash
+git pull https_link
+~~~
+
 
 
 
