@@ -423,6 +423,39 @@ Or
 git pull https_link
 ~~~
 
+# Simple Walkthrough for Pushing ✅
+
+## Do the following when understood all of the above steps
+
+###Applicable when want to push a local project to a new github repository
+
+```bash
+git init
+```
+```bash
+git remote add origin git@github.com:SSH_LINK.git
+```
+```bash
+git remote
+```
+
+```bash
+git status
+```
+Status will show that no commits and untracted files are there excluding the ones which are listed in .gitignore
+
+```bash
+git add -A
+```
+```bash
+git commit -m "msg"
+```
+
+```bash
+git push -u origin master
+
+```
+
 
 
 
