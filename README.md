@@ -191,7 +191,7 @@ origin  git@github.com:meetmakwana19/about-git.git (push)
 **⚠⚠ NOW GITHUB IS NOT LINKED WITH OUR PC 
 SO TO PUSH THE LOCAL REPO TO GITHUB DO THE FOLLOWING :** 
 
-1. Go to this Github documentation by [clicking here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?utm_source=Blog) to generate new ssh key.
+1. Go to this Github documentation by [clicking here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?utm_source=Blog/?target=_blank) to generate new ssh key.
 
 2. Paste the text below, substituting in your GitHub email address.
    ```bash
@@ -203,7 +203,7 @@ SO TO PUSH THE LOCAL REPO TO GITHUB DO THE FOLLOWING :**
    eval "$(ssh-agent -s)"
    ```
 
-If things are not working out [check this](https://www.codewithharry.com/videos/git-tut-beginners-hindi-5)
+If things are not working out [check this](https://www.codewithharry.com/videos/git-tut-beginners-hindi-5/?target=_blank)
 
 4. To read the ssh key I went to the directory given by previous eval command and opened .pub file with notepad
 
