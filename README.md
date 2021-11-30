@@ -259,7 +259,7 @@ From staging area only, local one will remain the same
 git rm --cached `filename`
 ```
 
--Delete file/folder from remote repository :
+- Delete file/folder from remote repository :
 ```bash
 git rm --cached `filename`
 ```
@@ -269,11 +269,31 @@ git rm --cached -r New_folder/
 ```
 Then just commit nd push the changes.
 ```bash
-git commit -, "Removed"
+git commit -m "Removed"
 ```
 ```bash
 git push
 ```
+
+- Delete multiple files in one go 😎
+
+From both local and remote repository
+```bash
+git rm file1.png file2.txt file3.py 
+```
+From only remote repository while keeping the local one untouched. 
+```bash
+git rm --cached file1.png file2.txt file3.py 
+```
+Then just commit nd push the changes.
+```bash
+git commit -m "Removed"
+```
+```bash
+git push
+```
+
+
 
 ### 3) Shorthand for status
 
