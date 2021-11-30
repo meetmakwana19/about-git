@@ -1,7 +1,11 @@
 
 # Git Cheatsheet 
 
-All the following steps are prefered to be followed and executed on 'Git Bash' after installing it on your machine.
+If you have any doubt/question then please feel free to raise the issue on github or can contact me on my other social media profiles and link of those social media profiles
+can be found on my github profile page. And also if there's any correction or new addition from your side for my cheatsheet then I would be priviliged to get your contritbution. 🙏🏻
+Hope you have a good time here 🥰
+ 
+ All the following steps are prefered to be followed and executed on 'Git Bash' after installing it on your machine.
 
 To check your git version
 
@@ -96,6 +100,17 @@ If want to put only the modified and deleted items at staging then,
 
 ```bash
 git add -u
+```
+
+To stage a New_folder(*Remember, don't keep a space in the folder name and keep as eg. New_folder) :
+
+```bash
+git add New_folder/
+```
+
+To stage say a specific.txt file in a nested folder :
+```bash
+git add folder1/folder2/folder3/specific.txt
 ```
 
 👉🏻 Can check status ✔ now by 
@@ -242,6 +257,22 @@ git rm `filename`
 From staging area only, local one will remain the same
 ```bash
 git rm --cached `filename`
+```
+
+-Delete file/folder from remote repository :
+```bash
+git rm --cached `filename`
+```
+For a folder (*Remember, don't keep a space in the folder name and keep as eg. New_folder),
+```bash
+git rm --cached -r New_folder/
+```
+Then just commit nd push the changes.
+```bash
+git commit -, "Removed"
+```
+```bash
+git push
 ```
 
 ### 3) Shorthand for status
@@ -477,9 +508,12 @@ git push -u origin master
 
 ```
 
+
+
+
 ## Related
 
-Here is a related article which is really good and can be used as Git cheet-sheat too.
+Here is a related article which is really good and can be used as Git cheat-sheat too.
 
 [javatpoint](https://www.javatpoint.com/git)
 
