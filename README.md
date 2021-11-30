@@ -1,17 +1,3 @@
-# about-git
-A single place where all I know about using Git and Github can be found.
-
-A repository is a folder consisting of one or more than one file along with a hidden folder named as ".git".
-This ".git" folder has all the information regarding our performed gut operations and handles all the git services.
-".git' spits the required files we need into our working directory which is known as Repository.
-
-Please checkout just the guide.txt and simple-steps.txt file as others were just sample files which were experimented on.
-The commands written inside the text files are UNIX based git commands executed in git bash command line.
-
-
-
-
-
 
 # Git Cheatsheet 
 
@@ -192,7 +178,8 @@ origin  git@github.com:meetmakwana19/about-git.git (push)
 **⚠⚠ NOW GITHUB IS NOT LINKED WITH OUR PC 
 SO TO PUSH THE LOCAL REPO TO GITHUB DO THE FOLLOWING :** 
 
-1. Go to this Github documentation by [clicking here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?utm_source=Blog){target="_blank"} to generate new ssh key.
+1. Go to this Github documentation by [clicking here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?utm_source=Blog) to generate new ssh key.
+
 
 2. Paste the text below, substituting in your GitHub email address.
    ```bash
@@ -204,7 +191,7 @@ SO TO PUSH THE LOCAL REPO TO GITHUB DO THE FOLLOWING :**
    eval "$(ssh-agent -s)"
    ```
 
-If things are not working out [check this](https://www.codewithharry.com/videos/git-tut-beginners-hindi-5){target="_blank"}
+If things are not working out [check this](https://www.codewithharry.com/videos/git-tut-beginners-hindi-5)
 
 4. To read the ssh key I went to the directory given by previous eval command and opened .pub file with notepad
 
@@ -424,11 +411,44 @@ Or
 git pull https_link
 ~~~
 
-# Simple Walkthrough for Pushing ✅
+## 12) Removing Staged files from Staging level
+
+```bash
+git restore --staged staged_file_name_or_path
+```
+
+```bash
+git reset staged_file_name_or_path
+```
+
+```bash
+git reset HEAD staged_file_name_or_path
+```
+
+- To remove all staged files from staging area
+
+```bash
+git restore --staged 
+or 
+git restore --staged .
+```
+
+```bash
+git reset 
+```
+
+```bash
+git reset HEAD 
+or
+git reset HEAD .
+or
+git reset HEAD --
+```
+# Simple Walkthrough for Pushing
 
 ## Do the following when understood all of the above steps
 
-###Applicable when want to push a local project to a new github repository
+### Applicable when want to push a local project to a new github repository
 
 ```bash
 git init
@@ -457,8 +477,9 @@ git push -u origin master
 
 ```
 
+## Related
 
+Here is a related article which is really good and can be used as Git cheet-sheat too.
 
-
-
+[javatpoint](https://www.javatpoint.com/git)
 
