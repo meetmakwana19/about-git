@@ -600,8 +600,7 @@ Then use that ID for revert command.
 ```bash
 git revert 12abc34
 ```
-After this command your terminal's text editor(Most likely Vim for git bash) and don't do anything if you dont want to write a custom commit message.
-
+After this command your terminal's text editor(Most likely Vim for git bash) will open and don't do anything if you dont want to write a custom commit message. 
 Just do ```:wq``` to save and exit the text editor which will make the revert work.
 
 If you want to write your custom git message then press ```i``` and start editing the first line on the editor and then exit the edit mode by pressing ```Esc``` key and then ```:wq```.
@@ -610,7 +609,7 @@ If you want to write your custom git message then press ```i``` and start editin
 
 To know the git commit IDs(40 characters long) of all the commits made. 
 
-Press ```q``` to exit the editor viewer after ```git log``` command.
+[Press ```q``` to exit the editor viewer after ```git log``` command.]
 ```bash
 git log 
 ```
@@ -625,10 +624,6 @@ The above ID is example and please dont try to copy paste the same ID
 ```bash
 git push
 ```
-
-git revert -n ID
-
-### iii) To go 
 
 ## 14) ```git reset``` - To destroy previous commits
 
@@ -657,7 +652,7 @@ Then use ```-f``` flag which means push forcibly.
 git push -f origin myBranch
 ```
 
-Need to force push like this because we came back in the commits on local level using ```git reset```
+Need to force push like this because we came back in the commits history on local level using ```git reset```
 
 But the remote is ahead of local in commits as the changes aren't yet pushed.
 
@@ -667,7 +662,7 @@ Thereforce, will need to force the push using ```-f```.
 
 ```--soft``` will destroy commits at remote level as well as local level
 
-**BUT** won't undo/revert the changes of the destroyed commits. Therefore, called as soft reset. 
+**BUT** won't undo/revert the changes of the destroyed commits at local repository. Therefore, called as soft reset. 
 
 ```bash
 git reset --soft HEAD~x
@@ -704,7 +699,7 @@ But when we have the exact link to the destroyed commit then we can access it's 
 git commit --amend
 ```
 
-After this command your terminal's text editor(Most likely Vim for git bash)
+After this command your terminal's text editor(Most likely Vim for git bash) will open.
 
 To write your message  press ```i``` and start editing the first line on the editor and then exit the edit mode by pressing ```Esc``` key and then ```:wq```.
 # Simple Walkthrough for Pushing
