@@ -141,6 +141,7 @@ git commit -m "Initial commit"
 
 - I prefer this as it skips staging and directly commits :
 - ```-a``` Commits modified and deleted files
+- Remember this following will mostly work when we have done tracking(staging) with the ```git add``` command atleast once for tha repository.
 
 ```bash
 git commit -a -m "msg"
