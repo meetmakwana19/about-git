@@ -32,7 +32,8 @@ Use command
 ```bash
 git update-git-for-windows
 ```
-## 1st time git setup
+## ***1st time git setup***
+
 ### STEP 0.1 
 
 ```bash 
@@ -59,7 +60,8 @@ git config --global user.email
 
 
 
-### STEP 1
+### STEP 1 
+(This step is optional is you already have an existing ```.gitignore``` file)
 
 "touch" creates a new blank file  of .gitignore
 
@@ -69,7 +71,7 @@ touch .gitignore
 
 edit the .gitignore file and add the name of the folder which we dont want to upload 
     
-### STEP 2 
+### STEP 2 - Initialization
 
 FYI : If we want to have a repository then 2 options we have, 
 
@@ -83,7 +85,7 @@ Will create a .git file, keep hidden files enable to see it
 git init
 ```
 
-### STEP 3 
+### STEP 3 - Staging
 
  Very imp Flow of git -
 
@@ -140,28 +142,29 @@ git status
 ```
 
 
-### STEP 4
+### STEP 4 - Commit
 
 - ```git commit``` means taking a snapshot 
 
 - So ```git add``` and ```git commit``` makes a snapshot associated to the changes we made
 
-- But right now nothing is added to my repo so using "Initial commit"
+- But right now nothing is added to my repo so using message for commit as "Initial commit"
 
 If this command is executed then an editor will open then press ```i``` to edit and write the message ```Initial commit``` and then press ```Esc``` key and then type ```:wq``` to save and exit the file.
 
 ```bash
 git commit
 ```
+---
 - ALTERNATE EASY METHOD
 
 ```bash
 git commit -m "Initial commit"
 ```
 
-- I prefer this as it skips staging and directly commits :
-- ```-a``` Commits modified and deleted files
-- Remember this following will mostly work when we have done tracking(staging) with the ```git add``` command atleast once for tha repository.
+- I prefer the following commands as it skips staging and directly commits :
+    - ```-a``` Commits modified and deleted files
+    - Remember this following will mostly work when we have done tracking(staging) with the ```git add``` command atleast once for tha repository.
 
 ```bash
 git commit -a -m "msg"
@@ -170,6 +173,7 @@ Or
 ```bash
 git commit -am "msg"
 ```
+---
 
 - If want to commit one one files separately with seaparate messages then, 
 
@@ -281,7 +285,7 @@ git push -u origin master
 ```
 (If once ```push -u origin``` is used then next time we just write ```git push``` which will by default push it the branch which was last commanded with ```-u```)
 
-- To push another branches on GitHub ,
+- To push to another branches on GitHub ,
 1. ```bash
    git checkout newBranch
    ```
@@ -293,14 +297,14 @@ git push -u origin master
 
 # Miscellaneous 
 
-### 1) Directly commit by skipping staging area
+## 1) Directly commit by skipping staging area
 
 ```bash
 git commit -a -m "Skipped staging area and commited directly"
 ```
 ```-a``` is selecting All for stagging and ```-m``` is for Message.
 
-### 2) Remove the file 
+## 2) Remove the file 
 
 From local storage & staging area
 
@@ -311,8 +315,10 @@ From staging area only, local one will remain the same
 ```bash
 git rm --cached `filename`
 ```
-
+---
 - Delete file/folder from remote repository :
+
+1] First deleting from local & staging area.
 ```bash
 git rm --cached `filename`
 ```
@@ -320,25 +326,29 @@ For a folder (*Remember, don't keep a space in the folder name and keep as eg. N
 ```bash
 git rm --cached -r New_folder/
 ```
-Then just commit nd push the changes.
+2] Then just commit nd push the changes.
 ```bash
 git commit -m "Removed"
 ```
 ```bash
 git push
 ```
+
+---
 
 - Delete multiple files in one go 😎
 
-From both local and remote repository
+1] From both local and remote repository
 ```bash
 git rm file1.png file2.txt file3.py 
 ```
-From only remote repository while keeping the local one untouched. 
+Or
+
+1] From only remote repository while keeping the local one untouched. 
 ```bash
 git rm --cached file1.png file2.txt file3.py 
 ```
-Then just commit nd push the changes.
+2] Then just commit nd push the changes.
 ```bash
 git commit -m "Removed"
 ```
@@ -348,7 +358,7 @@ git push
 
 
 
-### 3) Shorthand for status
+## 3) Shorthand for status
 
 ```bash
 $ git status -s
@@ -358,7 +368,7 @@ M site.html (this will be in red meaning modified in working tree )
 ```
 
 
-### 4)  Clone Command 
+## 4)  Clone Command 
    
 1. Making a new folder on PC and opening git bash(by right click menu) over there to clone into that folder.
 
@@ -376,7 +386,7 @@ M site.html (this will be in red meaning modified in working tree )
    ```
    *If "meet" folder name not given then a folder of remote repository's name will be created.
 
-### 5) Branch
+## 5) Branch
 
 - A branch is used to make a different workspace on the repository to dump/upload on that different branch to work separately without causing any trouble to the anothe branches.
 - An analogy of a **Tree** is perfectt example to understand as different branches are separated on the same Tree where Tree is considered to be the repository.
@@ -419,46 +429,46 @@ nothing to commit, working tree clean
 
 **Keep the file open and see the changes when switching between branches.
 
-### 6) Playing with branches
+## 6) Playing with branches
 
-To push to a specific branch to a remote names ```origin```
+- To push to a specific branch to a remote names ```origin```
 
 ```bash
 git push origin branch_name 
 ```
 
-To merge a specific branch with another branch say ```master``` branch then switch (```checkout```) to it and do the following
+- To merge a specific branch with another branch say ```master``` branch then switch (```checkout```) to it and do the following
 
 ```bash
 git merge specific_branch
 ```
 
-
-Delete a specific branch from the local repository
+- Delete a specific branch from the local repository
 
 ```bash
 git branch -d specific_branch
 ```
 
-Delete a specific branch from the remote ```origin```
+- Delete a specific branch from the remote ```origin```
 
 ```bash
 git push origin --delete specific_branch
 ```
 
-To rename any_branch 
+- To rename any_branch 
 
 ```bash
 git branch -m new_name
 ```
+---
 
-Then push changes forcibly,
+Then after all these or any of these push changes forcibly,
 
 ```bash
 git push -f origin myBranch
 ```
 
-### 7) Logs
+## 7) Logs
 
 TO GET LOG OF ALL OUR COMMITS
 ```bash
@@ -473,7 +483,7 @@ git log -p -2
 ```
 (press ```q``` to exit from the log viewer)
 
-### 8)Compare changes 
+## 8)Compare changes 
 
 WILL COMPARE AND SHOW THE DIFFERENCES BETWEEN THE CURRENT FILES(WORKING TREE) AND STAGED FILES
 ```bash
@@ -485,7 +495,7 @@ WILL COMPARE AND SHOW THE DIFFERENCES BETWEEN THE LAST COMMIT AND STAGED FILES
 git diff --staged
 ```
 
-### 9) .gitignore
+## 9) .gitignore
 
 ```.gitignore``` file has the list of all the files and folders which we dont want to track with git.
 
@@ -501,7 +511,7 @@ SHOULD BE KNOWN :
    `folder_name`/
    ```
 
-### 10) Restore files
+## 10) Restore files
 
 To restore files from last commit.
 Used to get back the last version of the file if someone has wrongly edited and saved it.
@@ -515,7 +525,7 @@ To match all the files with last commit and change and them according to the las
 git checkout -f
 ```
 
-### 11) Get the remote repository to local PC
+## 11) Get the remote repository to local PC
 
 Can make a new folder and run ```git init``` by opening git bash in that folder.
 
@@ -625,7 +635,7 @@ The above ID is example and please dont try to copy paste the same ID
 git push
 ```
 
-## 14) ```git reset``` - To destroy previous commits
+## 15) ```git reset``` - To destroy previous commits
 
 Say there are 5 commits, 1 being oldest(first) and 5 being latest.
 Now you want to go to 2nd commit and delete all 3rd,4th,5th commits.
@@ -693,7 +703,7 @@ But when we have the exact link to the destroyed commit then we can access it's 
 
 ⚠Also, if there is only one commit in the repository then that cannot be deleted by these commands as these command take the Head to the mentioned commit by deleting the ones above it and not destroy the mentioned commit.
 
-## 14) Rename message of last commit 
+## 16) Rename message of last commit 
 
 ```bash
 git commit --amend
