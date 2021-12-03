@@ -12,6 +12,26 @@ To check your git version
 ```bash
 git --version
 ```
+
+- Three cases:
+
+If your Git version is 2.14.1 or earlier:
+
+Uninstall Git, download the latest [Git](https://git-scm.com/downloads), and install it again.
+
+And versions between 2.14.2 and 2.16.1:
+
+Use command 
+```bash
+git update
+```
+
+If the version is equal to or greater than Git 2.16.1(2):
+
+Use command 
+```bash
+git update-git-for-windows
+```
 ## 1st time git setup
 ### STEP 0.1 
 
@@ -146,7 +166,33 @@ git commit -m "Initial commit"
 ```bash
 git commit -a -m "msg"
 ```
+Or
+```bash
+git commit -am "msg"
+```
 
+- If want to commit one one files separately with seaparate messages then, 
+
+
+```bash
+git add file1.txt
+```
+```bash
+git commit -m "Commiting file1.txt with custom message"
+```
+Similarly,
+```bash
+git add file2.txt
+```
+```bash
+git commit -m "Commiting file2.txt with custom message"
+```
+
+- To know if commit is done, check the log which will give information about about all commits.
+
+```bash
+git log --oneline
+```
 ## Commit done 🎉 , now Push remaining 
 
 To finally push the "master" branch on "origin" url 
@@ -156,7 +202,13 @@ git push -u origin master
 ```
 
 - If once ```push -u origin``` is used then next time we just write ```git push``` which will by default push it the branch which was last commanded with ```-u```
+- Technically, the ```-u``` flag adds a tracking reference to the upstream server you are pushing to. 
 
+What is important here is that this lets you do a ```git pull``` without supplying any more arguments. 
+
+For example, once you do a ```git push -u origin master```, you can later call ```git pull``` and git will know that you actually meant ```git pull origin master```.
+
+Otherwise, you'd have to type in the whole command.
 # Getting Started with ➡ Github ⬅
 
 Make a repo on github with no files(no readme, etc) just as an example 😉
@@ -381,6 +433,7 @@ To merge a specific branch with another branch say ```master``` branch then swit
 git merge specific_branch
 ```
 
+
 Delete a specific branch from the local repository
 
 ```bash
@@ -391,6 +444,18 @@ Delete a specific branch from the remote ```origin```
 
 ```bash
 git push origin --delete specific_branch
+```
+
+To rename any_branch 
+
+```bash
+git branch -m new_name
+```
+
+Then push changes forcibly,
+
+```bash
+git push -f origin myBranch
 ```
 
 ### 7) Logs
@@ -438,7 +503,7 @@ SHOULD BE KNOWN :
 
 ### 10) Restore files
 
-To restore files from last commit
+To restore files from last commit.
 Used to get back the last version of the file if someone has wrongly edited and saved it.
 Essentially matching with the last commit !!
 ```bash
@@ -476,6 +541,7 @@ git reset staged_file_name_or_path
 ```bash
 git reset HEAD staged_file_name_or_path
 ```
+HEAD points to location at which our repository is at current state at current time & space.
 
 - To remove all staged files from staging area
 
@@ -496,6 +562,151 @@ git reset HEAD .
 or
 git reset HEAD --
 ```
+
+## 13) To undo changes in the file at local level : 
+
+It's basically ```Ctrl+Z```
+IMP : But it's different because the file is not yet commited/staged.
+
+```bash
+git revert file.txt
+```
+Or
+```bash
+git checkout -- file.txt
+```
+
+
+
+## 14) Getting back to previous commit 
+
+### i) To go back to previous commit 
+```revert HEAD``` reverts the current state(HEAD) to the last commit.
+```bash
+git revert HEAD
+```
+
+### ii) To go back to a specific commmit 
+
+```12abc34``` is the 7 digit  example git commit ID.
+
+To know the git commit IDs of all the commits made. 
+
+```bash
+git log --oneline
+```
+
+Then use that ID for revert command.
+```bash
+git revert 12abc34
+```
+After this command your terminal's text editor(Most likely Vim for git bash) and don't do anything if you dont want to write a custom commit message.
+
+Just do ```:wq``` to save and exit the text editor which will make the revert work.
+
+If you want to write your custom git message then press ```i``` and start editing the first line on the editor and then exit the edit mode by pressing ```Esc``` key and then ```:wq```.
+
+- **Another way**, 
+
+To know the git commit IDs(40 characters long) of all the commits made. 
+
+Press ```q``` to exit the editor viewer after ```git log``` command.
+```bash
+git log 
+```
+
+Then use that 40 characters long ID for revert command.
+```bash
+git revert 4e28d49dc37b66v755b6f95dc70c8e579z3830f8
+```
+The above ID is example and please dont try to copy paste the same ID
+
+***Then***, 
+```bash
+git push
+```
+
+git revert -n ID
+
+### iii) To go 
+
+## 14) ```git reset``` - To destroy previous commits
+
+Say there are 5 commits, 1 being oldest(first) and 5 being latest.
+Now you want to go to 2nd commit and delete all 3rd,4th,5th commits.
+I mentioned DELETE i.e remove it's history totally and not like ```git revert``` command.
+
+```git reset``` is very powerfull to destroy those commits.
+
+***2 types :-*** 
+
+### 1) ```git reset --hard``` 
+
+```--hard``` will remove the commits history and undo changes of the commits at both local and remote levels.
+
+40 digits commit ID mentioned in the command is where we want to shift our HEAD(Pointer) to and delete every commit above it.
+
+```bash
+git reset --hard 4e28d49dc37b66v755b6f95dc70c8e579z3830f8
+```
+The above ID is example and please dont try to copy paste the same ID. 
+
+Then use ```-f``` flag which means push forcibly.
+
+```bash
+git push -f origin myBranch
+```
+
+Need to force push like this because we came back in the commits on local level using ```git reset```
+
+But the remote is ahead of local in commits as the changes aren't yet pushed.
+
+Thereforce, will need to force the push using ```-f```.
+
+### 2) ```git reset --soft```
+
+```--soft``` will destroy commits at remote level as well as local level
+
+**BUT** won't undo/revert the changes of the destroyed commits. Therefore, called as soft reset. 
+
+```bash
+git reset --soft HEAD~x
+```
+```~``` = Tilde sign
+
+```x``` = number how much back in commit history you want to go.
+
+Example : ```HEAD~3``` means go back three commmits from the HEAD.
+
+Then, we'll offcourse have to push the changes which will delete the commits even from the remote and won't display them.
+
+- 2 ways to push forcibly,
+
+```git push``` or ```git push -u origin``` wont work as we want to force push🌝
+
+```bash
+git push origin +master
+```
+Or
+```bash
+git push origin +master --force
+```
+
+⚠ However, a huge downside of these ```reset``` commands(both hard and soft) is that it just makes the commmit invisible from our github repository
+
+But when we have the exact link to the destroyed commit then we can access it's full files like try [this](https://github.com/meetmakwana19/testing/commit/3b008dd555f0933ccdcd5893d4aa71413c41a55f)
+
+⚠Also, if there is only one commit in the repository then that cannot be deleted by these commands as these command take the Head to the mentioned commit by deleting the ones above it and not destroy the mentioned commit.
+
+## 14) Rename message of last commit 
+
+```bash
+git commit --amend
+```
+
+After this command your terminal's text editor(Most likely Vim for git bash)
+
+To write your message  press ```i``` and start editing the first line on the editor and then exit the edit mode by pressing ```Esc``` key and then ```:wq```.
 # Simple Walkthrough for Pushing
 
 ## Do the following when understood all of the above steps
@@ -526,7 +737,6 @@ git commit -m "msg"
 
 ```bash
 git push -u origin master
-
 ```
 
 
