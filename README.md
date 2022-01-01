@@ -712,6 +712,58 @@ git commit --amend
 After this command your terminal's text editor(Most likely Vim for git bash) will open.
 
 To write your message  press ```i``` and start editing the first line on the editor and then exit the edit mode by pressing ```Esc``` key and then ```:wq```.
+# Important lesson I learnt
+
+I wanted to unstage all the staged files so used the command `git reset HEAD`
+
+But unknowingly I deleted dozens of important files from my local repository.
+
+So the followings steps to take in such situation to restore the file of the local repository.
+
+- Git keeps a log of all ref updates (e.g., checkout, reset, commit, merge). You can view it by typing:
+
+```bash
+git reflog
+```
+
+Somewhere in this list is the commit that you lost. 
+
+Let's say you just typed `git reset HEAD` and want to undo it. My reflog looks like this:
+
+![Screenshot](./ss.png "Preview image")
+
+The first line says that HEAD 0 positions ago (in other words, the current position) is 8efd6f0.
+It was obtained by resetting to HEAD~. 
+The second line says that HEAD 1 position ago (in other words, the state before the reset) is f7e9df2. 
+It was obtained by checking out a particular commit (though that's not important right now). 
+
+So, to undo the reset and go to a specific commit (85bfa92- where I want to go back, from where I lost the data) 
+```bash
+git reset 'HEAD@{4}'
+```
+or
+```bash
+git reset 85bfa92
+```
+
+This will give lost of all files which were lost.
+
+To obtain then back, we'll use the command `checkout`
+
+```bash
+git checkout 22_Class_Based_Components.md 22_news_app/.gitignore 22_news_app/README.md 22_news_app/SampleResponse.json 22_news_app/package-lock.json 22_news_app/package.json 22_news_app/public/favicon.ico 22_news_app/public/index.html 22_news_app/public/logo192.png 22_news_app/public/logo512.png 22_news_app/public/manifest.json 22_news_app/public/robots.txt 22_news_app/src/App.css 22_news_app/src/App.test.js 22_news_app/src/components/loading.gif 22_news_app/src/index.css 22_news_app/src/index.js 22_news_app/src/logo.svg 22_news_app/src/reportWebVitals.js 22_news_app/src/setupTests.js 23_Components_structuring.md 24_News_API.md 25_rcc_States.md 26_Looping_array.md 27_Fetching_from_API.md 28_Next_Previous_pages.md 29_Loading_Spinner&variable_pageSize.md 30_Categories&propTypes.md
+```
+Writing the names of all files together to restore them in one go.
+
+## 17) How to insert image in markdown ? 
+
+```bash
+![alt text for screen readers](/path/to/image.png "Text to show on mouseover")
+```
+
+## 18) How to color text in markdown ?
+
+<span style="color:yellow">some *yellow* text</span>
 # Simple Walkthrough for Pushing
 
 ## Do the following when understood all of the above steps
