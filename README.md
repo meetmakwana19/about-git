@@ -763,7 +763,9 @@ Writing the names of all files together to restore them in one go.
 
 ## 18) How to color text in markdown ?
 
+```bash
 <span style="color:yellow">some *yellow* text</span>
+```
 # Simple Walkthrough for Pushing
 
 ## Do the following when understood all of the above steps
