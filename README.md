@@ -379,12 +379,18 @@ M site.html (this will be in red meaning modified in working tree )
    ```bash
    git clone https://github.com/meetmakwana19/To-Do-List.git meet
    ```
-   where ```https....``` is the link of repo to be cloned and ```meet``` is the folder name where the repo to be closed inside our opened folder.
+   where ```https....``` is the link of repo to be cloned and ```meet``` is the folder name where the repo to be cloned inside our opened folder.
 
    ```bash
    git clone https://github.com/meetmakwana19/To-Do-List.git
    ```
    *If "meet" folder name not given then a folder of remote repository's name will be created.
+
+4. Clone to a specific_branch
+
+    ```bash
+    git clone -b specific_branch remote_link_SSH_or_HTTPS
+    ```
 
 ## 5) Branch
 
