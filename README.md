@@ -1,4 +1,3 @@
-
 # Git Cheatsheet 
 
 If you have any doubt/question then please feel free to raise the issue on github or can contact me on my other social media profiles and link of those social media profiles
@@ -52,19 +51,13 @@ To know it is set up or not :
 git config --global user.name
 ```
 ```(your username as output)```
-
 ```bash
 git config --global user.email
 ```
 ```(your email as output)```
-
-
-
 ### STEP 1 
 (This step is optional is you already have an existing ```.gitignore``` file)
-
 "touch" creates a new blank file  of .gitignore
-
 ```bash 
 touch .gitignore
 ```
@@ -224,9 +217,7 @@ TO CONNECT TO GITHUB'S REMOTE REPOSITORY WITH OUR LOCAL REPOSITORY(Folder on the
 git remote add origin git@github.com:meetmakwana19/about-git.git
 ```
 ```git@github.com:meetmakwana19/about-git.git``` is the **SSH** link of the github repository on which we want to connect and upload our local repository.
-
 MEANING A REMOTE NAMED ```origin``` IS ADDED AND OUR URL CAN BE CALLED AS ```origin```
-
 - TO SEE REMOTE
 ~~~bash 
 git remote
@@ -303,11 +294,8 @@ git push -u origin master
 git commit -a -m "Skipped staging area and commited directly"
 ```
 ```-a``` is selecting All for stagging and ```-m``` is for Message.
-
 ## 2) Remove the file 
-
 From local storage & staging area
-
 ```bash
 git rm `filename`
 ```
@@ -504,7 +492,6 @@ git diff --staged
 ## 9) .gitignore
 
 ```.gitignore``` file has the list of all the files and folders which we dont want to track with git.
-
 SHOULD BE KNOWN : 
 1. TO IGNORE ALL THE FILE-TYPES(.log), ADD THIS IS IN .gitignore
    eg: (.log)
@@ -605,9 +592,7 @@ git revert HEAD
 ### ii) To go back to a specific commmit 
 
 ```12abc34``` is the 7 digit  example git commit ID.
-
 To know the git commit IDs of all the commits made. 
-
 ```bash
 git log --oneline
 ```
@@ -648,15 +633,10 @@ Now you want to go to 2nd commit and delete all 3rd,4th,5th commits.
 I mentioned DELETE i.e remove it's history totally and not like ```git revert``` command.
 
 ```git reset``` is very powerfull to destroy those commits.
-
 ***2 types :-*** 
-
 ### 1) ```git reset --hard``` 
-
 ```--hard``` will remove the commits history and undo changes of the commits at both local and remote levels.
-
 40 digits commit ID mentioned in the command is where we want to shift our HEAD(Pointer) to and delete every commit above it.
-
 ```bash
 git reset --hard 4e28d49dc37b66v755b6f95dc70c8e579z3830f8
 ```
@@ -677,24 +657,16 @@ Thereforce, will need to force the push using ```-f```.
 ### 2) ```git reset --soft```
 
 ```--soft``` will destroy commits at remote level as well as local level
-
 **BUT** won't undo/revert the changes of the destroyed commits at local repository. Therefore, called as soft reset. 
-
 ```bash
 git reset --soft HEAD~x
 ```
 ```~``` = Tilde sign
-
 ```x``` = number how much back in commit history you want to go.
-
 Example : ```HEAD~3``` means go back three commmits from the HEAD.
-
 Then, we'll offcourse have to push the changes which will delete the commits even from the remote and won't display them.
-
 - 2 ways to push forcibly,
-
 ```git push``` or ```git push -u origin``` wont work as we want to force push🌝
-
 ```bash
 git push origin +master
 ```
@@ -772,6 +744,40 @@ Writing the names of all files together to restore them in one go.
 ```bash
 <span style="color:yellow">some *yellow* text</span>
 ```
+
+## 19) Stash command 
+
+- Used when we want to save current working directory/branch's work which can be incomplete and proceed to some other branch's work 
+- Useful while switching branches
+- Useful when dont wanna commit incomplete progress of current branch.
+- Normally we commit and then switch branches 
+- But if switching without doing a commit then 2 of the following things can either happn 
+  1. Switch to other branch carrying changes to other changes 
+  2. Git wont allow to switch and will ask to commit/stash the changes
+- The command allows switching branches without commiting to the current branch
+- `Stash` meaning is "to store something safely ata hidden place". 
+- So git temporarily saves the data without committing
+- Simple easiest way to stash current work in the current branch is 
+```
+git stash
+```
+- Giving name to the stash 
+```
+git stash save cool_name
+```
+- Listing the available stashes 
+```
+git stash list
+```
+- To get a specific stash back 
+```
+git stash apply `index`
+```
+- TO get back the stashed changes 
+```
+git stash pop
+```
+
 # Simple Walkthrough for Pushing
 
 ## Do the following when understood all of the above steps
@@ -812,4 +818,3 @@ git push -u origin master
 Here is a related article which is really good and can be used as Git cheat-sheat too.
 
 [javatpoint](https://www.javatpoint.com/git)
-
