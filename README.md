@@ -778,6 +778,41 @@ git stash apply `index`
 git stash pop
 ```
 
+## Error :Object file is empty ? .git is corrupt ?
+
+Error can look something like this :
+```
+error: object file .git/objects/5c/e7c038a18323acee48ad13 is empty
+
+fatal: loose object 5ce7c038a213 (stored in .git/objects/5c/e7c038a183d883) is corrupt
+```
+Solution learned from https://stackoverflow.com/a/31110176/17796286 
+
+Solution : 
+
+```
+find .git/objects/ -type f -empty | xargs rm
+git fetch -p
+git fsck --full
+```
+
+1. Finding empty .git object files and then `xargs rm`  takes the list of empty files provided by find and passes them as arguments to the rm command, which removes the files
+   1. `|` pipe connects the standard output (stdout) of the command on the left side of the pipe to the standard input (stdin) of the command on the right side
+2. `git fetch` updates the remote-tracking branches in your local repository to match the state of the remote repository.
+   1. The `-p` or `--prune` option is used to remove any remote-tracking branches that no longer exist on the remote repository.
+   2. This command is used to retrieve the latest changes and objects from the remote repository.
+3. `git fsck --full` This command performs a full object store check in the Git repository.
+   1. `git fsck` (file system consistency check) is a command used to check the integrity of the Git repository's object database.
+   2. The `--full` option ensures that all objects are checked, including those that are not reachable from any branch or tag.
+   3. The purpose of this line is to verify the integrity of the object store and ensure there are no remaining corruption issues.
+Overall, these commands aim to fix a broken Git repository by removing empty object files, fetching missing objects from the remote repository, and performing a comprehensive integrity check.
+
+in Short, 
+1. remove any empty object files that cause corruption
+2. fetch down the missing objects (as well as latest changes)
+3. do a full object store check
+
+
 # Simple Walkthrough for Pushing
 
 ## Do the following when understood all of the above steps
@@ -809,8 +844,6 @@ git commit -m "msg"
 ```bash
 git push -u origin master
 ```
-
-
 
 
 ## Related
