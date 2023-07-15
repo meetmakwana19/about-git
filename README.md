@@ -812,6 +812,30 @@ in Short,
 2. fetch down the missing objects (as well as latest changes)
 3. do a full object store check
 
+- If Error on 
+```bash
+find .git/objects/ -type f -empty | xargs rm
+
+rm: missing operand
+```
+So  add `-r` flag in the `rm` command like 
+```bash
+find .git/objects/ -type f -empty | xargs -r rm
+```
+- If Error on 
+```bash
+git fetch -p
+
+error: refs/heads/main does not point to a valid object!
+fatal: bad object HEAD
+```
+Try this shell script : [Refer](https://stackoverflow.com/questions/6265502/getting-rid-of-does-not-point-to-a-valid-object-for-an-old-git-branch)
+```bash
+git for-each-ref --format="%(refname)" | while read ref; do
+    git show-ref --quiet --verify $ref 2>/dev/null || git update-ref -d $ref
+done
+```
+
 
 # Simple Walkthrough for Pushing
 
