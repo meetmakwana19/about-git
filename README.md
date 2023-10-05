@@ -249,12 +249,17 @@ SO TO PUSH THE LOCAL REPO TO GITHUB DO THE FOLLOWING :**
    ssh-keygen -t ed25519 -C "your_email@example.com"
    ```
 
-3. To generate Agent pid
+3. To generate Agent pid (Execute this command in git bash if using Windows)
    ```bash
    eval "$(ssh-agent -s)"
    ```
+   - Add private key to the ssh agent, change directory to the `.ssh` folder and try to run the folder command.
+   ```bash
+   ssh-add ~/.ssh/id_ed25519
+   ```
 
 If things are not working out [check this](https://www.codewithharry.com/videos/git-tut-beginners-hindi-5)
+
 
 4. To read the ssh key I went to the directory given by previous eval command and opened .pub file with notepad
 
@@ -265,12 +270,51 @@ If things are not working out [check this](https://www.codewithharry.com/videos/
 
 7. Copied the SSH url which looks like ``` git@github.com:meetmakwana19/about-git.git ```
 
+---
+
+### Using 2 github accounts in one computer (Please Ignore if not needed) : 
+
+- Do all the setps as above by starting with generating ssh keys for another email id like the following :
+1. `ssh-keygen -t ed25519 -C "other_email@example.com"`
+   1. Type the name of new file for saving key with complete path like : `C:\Users\meet.makwana/.ssh/id_ed25519_other`
+   2. Copy paste the public key in your another github account's settings.
+2. `eval "$(ssh-agent -s)"`
+3. Add that other private key to the ssh-agent : `ssh-add ~/.ssh/id_ed25519_other`
+4. Now your `.ssh/` folder has 2 private 2 public keys for 2 different github accounts.
+5. Make a `config` file without any file extensions in your `.ssh/` folder and write the following into it : 
+```
+# Default account (main account)
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+
+# Other account
+Host github-other.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519_other
+```
+6. Now change the email id in your required directory for that other github word like `git config user.email "other_email@gmail.com"` 
+7. Now clone or push the repo related to that other account using that defined host like 
+```bash
+git clone git@github-other.com:meetmakwana19/about-git.git
+```
+or
+```bash
+git remote set-url origin git@github-other.com:meetmakwana19/about-git.git
+```
+
+---
+
+### Continued : 
+
 8. Have to set the Github's SSH url to the local machine 
 ```bash
 git remote set-url origin git@github.com:meetmakwana19/about-git.git
 ```
 
-9. To finally push the "master" branch on "origin" url 
+1. To finally push the "master" branch on "origin" url 
 ```bash
 git push -u origin master
 ```
