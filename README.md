@@ -569,11 +569,39 @@ Can make a new folder and run ```git init``` by opening git bash in that folder.
 ```bash
 git clone https_link
 ```
-Or
+
+- Whereas `git pull` on the other hand is not same as clone command. 
+- So git pull means you are fetching the last modified changes from the remote repository and kinda refreshing your local repository to get the changes.
+- It will be often used while a team is collaborating on a repo.
+- It is basically `git fetch` + `git merge`.
 
 ~~~bash
 git pull https_link
 ~~~
+So, 
+> **Clone**: Get a working copy of the remote repository.
+
+> **Pull**: I am working on this, please get me the new changes that may be updated by others.
+
+
+`git clone <remote-url>` 
+
+- create a new directory
+- `git init` // init new repository
+- `git remote add origin <remote-url>` // add remote
+- `git fetch` // fetch all remote branchs
+- `git switch <default_branch>` // switch to the default branch
+
+`git pull` 
+
+- fetch ALL remote branches
+- merge CURRENT local branch with tracking remote branch (not another branch) (if local branch existed)
+
+`git pull <remote> <branch>` 
+
+- fetch the remote branch
+- merge CURRENT local branch with the remote branch (if local branch existed)
+
 
 ## 12) Removing Staged files from Staging level
 
