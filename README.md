@@ -638,6 +638,13 @@ or
 git reset HEAD --
 ```
 
+### Remove commited files from commit level and unstage them without losing changed data : 
+
+```bash
+git reset HEAD~1
+```
+Instead of 1, there could be any number of commits you want to unstage.
+
 ## 13) To undo changes in the file at local level : 
 
 It's basically ```Ctrl+Z```
