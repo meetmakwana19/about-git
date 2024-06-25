@@ -857,6 +857,13 @@ git stash apply `index`
 git stash pop
 ```
 
+## 20) Commit in the past 
+
+```bash
+git commit --date='year-month-day hour:minutes:seconds' -m "message"
+```
+So it would look something like this: `git commit --date='2021-01-01 12:12:00' -m "message"`
+
 ## Error :Object file is empty ? .git is corrupt ?
 
 Error can look something like this :
