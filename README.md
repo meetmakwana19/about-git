@@ -960,7 +960,11 @@ git stash pop
 git commit --date='year-month-day hour:minutes:seconds' -m "message"
 ```
 
-So it would look something like this: `git commit --date='2021-01-01 12:12:00' -m "message"`
+So it would look something like this: 
+
+```bash
+git commit --date='2024-07-11 12:12:00' -m "message"
+```
 
 ## 21) Tags
 
