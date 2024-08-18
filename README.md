@@ -853,6 +853,82 @@ After this command your terminal's text editor(Most likely Vim for git bash) wil
 
 To write your message press `i` and start editing the first line on the editor and then exit the edit mode by pressing `Esc` key and then `:wq`.
 
+## 17) Alter details of previous commits :
+
+If you want to change the dates of multiple commits, you can do so by using an interactive rebase.
+
+1. Start an Interactive Rebase
+   1. Decide how many commits back you want to change. For example, if you want to modify the last 3 commits:
+   2. This will open your default text editor with a list of the last 3 commits.
+
+```bash
+git rebase -i HEAD~3
+```
+
+2. Edit the Commits
+
+   1. In the editor, you'll see something like this:
+   2. The commits will be arranges in a fashion of newest to be at the bottom.
+
+   ```bash
+   pick commit_hash Commit_message_3
+   pick commit_hash Commit_message_2
+   pick commit_hash Commit_message_1
+   ```
+
+   3. Enter `i` key to enter the insert mode.
+   4. Change `pick` to `edit` for each commit whose date you want to modify:
+
+   ```bash
+   pick commit_hash Commit_message_3
+   edit commit_hash Commit_message_2
+   edit commit_hash Commit_message_1
+   ```
+
+   5. Save and close the editor by pressing `esc` key and the typing `:wq` and press `Entern`.
+
+3. Amend Each Commit
+
+   1. Git will stop at each commit, allowing you to amend it like :
+
+   ```bash
+   Stopped at ef121d1...  L25: Added explicit address typecasting theory
+   You can amend the commit now, with
+
+   git commit --amend
+
+   Once you are satisfied with your changes, run
+
+   git rebase --continue
+   ```
+
+   2. For each commit, run:
+
+   ```bash
+   git commit --amend --date="YYYY-MM-DDTHH:MM:SS"
+   ```
+
+   3. This will also open the editor. Save and exit it.
+   4. Continue the Rebase. This will move on to the next commit in the rebase sequence.
+
+   ```bash
+   git rebase --continue
+   ```
+
+   5. Edit the Next Commit (If Needed).
+
+4. Rebase and update the branch after completing all the edit :
+
+```bash
+git rebase --continue
+```
+
+5. Now just push the changes. If you previously pushed these commits to a remote repository, you'll need to force push to update the remote branch with your new commit history:
+
+```bash
+git push --force-with-lease
+```
+
 # Important lesson I learnt
 
 I wanted to unstage all the staged files so used the command `git reset HEAD`
@@ -960,7 +1036,7 @@ git stash pop
 git commit --date='year-month-day hour:minutes:seconds' -m "message"
 ```
 
-So it would look something like this: 
+So it would look something like this:
 
 ```bash
 git commit --date='2024-07-11 12:12:00' -m "message"
