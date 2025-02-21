@@ -929,6 +929,40 @@ git rebase --continue
 git push --force-with-lease
 ```
 
+## 18) Amend old commit and delete everything above it without losing its content : 
+
+If you want to 
+- reset your branch to a specific commit, 
+- discard all commits above it, 
+- amend that commit with new changes, 
+- and push it back to the remote branch. 
+
+Here’s how to do it:
+
+1. Reset your branch to the target commit and get all the changes after that commit to the staging level 
+
+```bash
+git reset --soft <commit-hash>
+```
+--soft keeps all changes staged.
+
+2. Get those staged changes out of staging and make the necessary changes you wished to get in that commit
+3. Stage back all the changes 
+4. Amend the commit
+
+```bash 
+git commit --amend
+```
+This will update the commit message and include new changes.
+
+5. Force push the updated commit, 
+
+Since this rewrites history, you need to force push:
+
+```bash
+git push --force-with-lease
+```
+
 # Important lesson I learnt
 
 I wanted to unstage all the staged files so used the command `git reset HEAD`
