@@ -1165,6 +1165,28 @@ git tag -d v1.4-lw
 git push origin --delete v1.4
 ```
 
+
+## 22) Rebasing your branch with the base branch 
+
+1. To rebase your branch on the latest main and maintain a linear history, run:
+
+```base
+git fetch origin
+git rebase origin/main
+```
+
+2. If there are conflicts, Git will prompt you to resolve them. After resolving, continue rebase with:
+
+```bash
+git rebase --continue
+```
+
+3. Once the rebase is done, push the updated history. Again, this requires a force push since you rewrote the commit history.
+
+```bash
+git push origin <your-branch> --force
+```
+
 ## Error :Object file is empty ? .git is corrupt ?
 
 Error can look something like this :
