@@ -1187,6 +1187,32 @@ git rebase --continue
 git push origin <your-branch> --force
 ```
 
+## 25) Get back committed changes from commit level to stage level 
+
+- Say you have a series of linear commits like the following 
+
+```bash
+62a1b7d (HEAD -> updates, origin/updates) chore: fixed messed up serial numbers
+0071e39 Merge remote-tracking branch 'origin/master' into updates
+2c3957a feat: added rebasing info
+2675d8d (origin/master, origin/HEAD) Merge pull request #2 from meetmakwana19/updates
+```
+
+- And you wish to get all the changes done in the top 3 commits back to stag level so you reset your branch to the commit below it i.e. `2675d8d`.
+
+```bash
+git reset 2675d8d
+```
+
+- Now your git history will look like : 
+
+```bash 
+2675d8d (origin/master, origin/HEAD) Merge pull request #2 from meetmakwana19/updates
+.
+.
+```
+- Now your committed changes will be brought back to the staging level from where you can bring it out of stag and edit and restage and commit back.
+
 ## Error :Object file is empty ? .git is corrupt ?
 
 Error can look something like this :
