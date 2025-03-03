@@ -843,6 +843,53 @@ But when we have the exact link to the destroyed commit then we can access it's 
 
 ⚠Also, if there is only one commit in the repository then that cannot be deleted by these commands as these command take the Head to the mentioned commit by deleting the ones above it and not destroy the mentioned commit.
 
+#### Important lesson I learnt
+
+I wanted to unstage all the staged files so used the command `git reset HEAD`
+
+But unknowingly I deleted dozens of important files from my local repository.
+
+So the followings steps to take in such situation to restore the file of the local repository.
+
+- Git keeps a log of all ref updates (e.g., checkout, reset, commit, merge). You can view it by typing:
+
+```bash
+git reflog
+```
+
+Somewhere in this list is the commit that you lost.
+
+Let's say you just typed `git reset HEAD` and want to undo it. My reflog looks like this:
+
+![Screenshot](./ss.png "Preview image")
+
+The first line says that HEAD 0 positions ago (in other words, the current position) is 8efd6f0.
+It was obtained by resetting to HEAD~.
+The second line says that HEAD 1 position ago (in other words, the state before the reset) is f7e9df2.
+It was obtained by checking out a particular commit (though that's not important right now).
+
+So, to undo the reset and go to a specific commit (85bfa92- where I want to go back, from where I lost the data)
+
+```bash
+git reset 'HEAD@{4}'
+```
+
+or
+
+```bash
+git reset 85bfa92
+```
+
+This will give lost of all files which were lost.
+
+To obtain then back, we'll use the command `checkout`
+
+```bash
+git checkout 22_Class_Based_Components.md 22_news_app/.gitignore 22_news_app/README.md 22_news_app/SampleResponse.json 22_news_app/package-lock.json 22_news_app/package.json 22_news_app/public/favicon.ico 22_news_app/public/index.html 22_news_app/public/logo192.png 22_news_app/public/logo512.png 22_news_app/public/manifest.json 22_news_app/public/robots.txt 22_news_app/src/App.css 22_news_app/src/App.test.js 22_news_app/src/components/loading.gif 22_news_app/src/index.css 22_news_app/src/index.js 22_news_app/src/logo.svg 22_news_app/src/reportWebVitals.js 22_news_app/src/setupTests.js 23_Components_structuring.md 24_News_API.md 25_rcc_States.md 26_Looping_array.md 27_Fetching_from_API.md 28_Next_Previous_pages.md 29_Loading_Spinner&variable_pageSize.md 30_Categories&propTypes.md
+```
+
+Writing the names of all files together to restore them in one go.
+
 ## 16) Rename message of last commit
 
 ```bash
@@ -963,66 +1010,19 @@ Since this rewrites history, you need to force push:
 git push --force-with-lease
 ```
 
-# Important lesson I learnt
-
-I wanted to unstage all the staged files so used the command `git reset HEAD`
-
-But unknowingly I deleted dozens of important files from my local repository.
-
-So the followings steps to take in such situation to restore the file of the local repository.
-
-- Git keeps a log of all ref updates (e.g., checkout, reset, commit, merge). You can view it by typing:
-
-```bash
-git reflog
-```
-
-Somewhere in this list is the commit that you lost.
-
-Let's say you just typed `git reset HEAD` and want to undo it. My reflog looks like this:
-
-![Screenshot](./ss.png "Preview image")
-
-The first line says that HEAD 0 positions ago (in other words, the current position) is 8efd6f0.
-It was obtained by resetting to HEAD~.
-The second line says that HEAD 1 position ago (in other words, the state before the reset) is f7e9df2.
-It was obtained by checking out a particular commit (though that's not important right now).
-
-So, to undo the reset and go to a specific commit (85bfa92- where I want to go back, from where I lost the data)
-
-```bash
-git reset 'HEAD@{4}'
-```
-
-or
-
-```bash
-git reset 85bfa92
-```
-
-This will give lost of all files which were lost.
-
-To obtain then back, we'll use the command `checkout`
-
-```bash
-git checkout 22_Class_Based_Components.md 22_news_app/.gitignore 22_news_app/README.md 22_news_app/SampleResponse.json 22_news_app/package-lock.json 22_news_app/package.json 22_news_app/public/favicon.ico 22_news_app/public/index.html 22_news_app/public/logo192.png 22_news_app/public/logo512.png 22_news_app/public/manifest.json 22_news_app/public/robots.txt 22_news_app/src/App.css 22_news_app/src/App.test.js 22_news_app/src/components/loading.gif 22_news_app/src/index.css 22_news_app/src/index.js 22_news_app/src/logo.svg 22_news_app/src/reportWebVitals.js 22_news_app/src/setupTests.js 23_Components_structuring.md 24_News_API.md 25_rcc_States.md 26_Looping_array.md 27_Fetching_from_API.md 28_Next_Previous_pages.md 29_Loading_Spinner&variable_pageSize.md 30_Categories&propTypes.md
-```
-
-Writing the names of all files together to restore them in one go.
-
-## 17) How to insert image in markdown ?
+## 19) How to insert image in markdown ?
 
 ```bash
 ![alt text for screen readers](/path/to/image.png "Text to show on mouseover")
 ```
 
-## 18) How to color text in markdown ?
+## 20) How to color text in markdown ?
 
 ```bash
 <span style="color:yellow">some *yellow* text</span>
 ```
 
-## 19) Stash command
+## 21) Stash command
 
 - Used when we want to save current working directory/branch's work which can be incomplete and proceed to some other branch's work
 - Useful while switching branches
@@ -1064,7 +1064,7 @@ git stash apply `index`
 git stash pop
 ```
 
-## 20) Commit in the past
+## 22) Commit in the past
 
 ```bash
 git commit --date='year-month-day hour:minutes:seconds' -m "message"
@@ -1076,7 +1076,7 @@ So it would look something like this:
 git commit --date='2024-07-11 12:12:00' -m "message"
 ```
 
-## 21) Tags
+## 23) Tags
 
 - Tags are ref's that point to specific points in Git history.
 - Tagging is generally used to capture a point in history that is used for a marked version release (i.e. v1.0.1).
@@ -1166,7 +1166,7 @@ git push origin --delete v1.4
 ```
 
 
-## 22) Rebasing your branch with the base branch 
+## 24) Rebasing your branch with the base branch 
 
 1. To rebase your branch on the latest main and maintain a linear history, run:
 
@@ -1186,6 +1186,32 @@ git rebase --continue
 ```bash
 git push origin <your-branch> --force
 ```
+
+## 25) Get back committed changes from commit level to stage level 
+
+- Say you have a series of linear commits like the following 
+
+```bash
+62a1b7d (HEAD -> updates, origin/updates) chore: fixed messed up serial numbers
+0071e39 Merge remote-tracking branch 'origin/master' into updates
+2c3957a feat: added rebasing info
+2675d8d (origin/master, origin/HEAD) Merge pull request #2 from meetmakwana19/updates
+```
+
+- And you wish to get all the changes done in the top 3 commits back to stag level so you reset your branch to the commit below it i.e. `2675d8d`.
+
+```bash
+git reset 2675d8d
+```
+
+- Now your git history will look like : 
+
+```bash 
+2675d8d (origin/master, origin/HEAD) Merge pull request #2 from meetmakwana19/updates
+.
+.
+```
+- Now your committed changes will be brought back to the staging level from where you can bring it out of stag and edit and restage and commit back.
 
 ## Error :Object file is empty ? .git is corrupt ?
 
