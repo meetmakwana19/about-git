@@ -1213,6 +1213,61 @@ git reset 2675d8d
 ```
 - Now your committed changes will be brought back to the staging level from where you can bring it out of stag and edit and restage and commit back.
 
+## 26) Amend commited changes : 
+
+1. Find the Commit ID
+
+```bash
+git log --oneline
+```
+2. Start an Interactive Rebase Using the Commit ID
+
+```bash
+git rebase -i ghi789
+```
+3. Modify the Commit, A text editor will open showing a list of commits:
+
+```bash
+edit ghi789 Commit message 3  <-- Change "pick" to "edit"
+pick jkl012 Commit message 4
+pick mno345 Commit message 5
+```
+
+Press `i` to enter in insert mode of the editor. Change `pick` to `edit` by typing for the commit you want to modify.
+
+Save and exit by pressing `Esc` key and the typing `:wq` and `Enter`.
+
+4. Make Changes & Amend the Commit
+   1. Now Git will stop at that commit.
+   2. Modify your files (if needed)
+   3. Stage the changes
+   4. Now you can amend the changes with a new commit message or the old one itself
+      1. For new message :
+         
+         ```bash
+         git commit --amend -m "Updated commit message or changes"
+         
+         ```
+      2. For old message :
+         
+         ```bash
+         git commit --amend --no-edit
+         
+         ```
+   5. Continue the rebase:
+      
+      ```bash
+      git rebase --continue
+      ```
+
+5. Since this rewrites history, force push 
+
+```bash
+git push --force
+```
+
+---
+
 ## Error :Object file is empty ? .git is corrupt ?
 
 Error can look something like this :
