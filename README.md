@@ -861,7 +861,7 @@ Somewhere in this list is the commit that you lost.
 
 Let's say you just typed `git reset HEAD` and want to undo it. My reflog looks like this:
 
-![Screenshot](./ss.png "Preview image")
+![Screenshot](./ss.png 'Preview image')
 
 The first line says that HEAD 0 positions ago (in other words, the current position) is 8efd6f0.
 It was obtained by resetting to HEAD~.
@@ -976,33 +976,36 @@ git rebase --continue
 git push --force-with-lease
 ```
 
-## 18) Amend old commit and delete everything above it without losing its content : 
+## 18) Amend old commit and delete everything above it without losing its content :
 
-If you want to 
-- reset your branch to a specific commit, 
-- discard all commits above it, 
-- amend that commit with new changes, 
-- and push it back to the remote branch. 
+If you want to
+
+- reset your branch to a specific commit,
+- discard all commits above it,
+- amend that commit with new changes,
+- and push it back to the remote branch.
 
 Here’s how to do it:
 
-1. Reset your branch to the target commit and get all the changes after that commit to the staging level 
+1. Reset your branch to the target commit and get all the changes after that commit to the staging level
 
 ```bash
 git reset --soft <commit-hash>
 ```
+
 --soft keeps all changes staged.
 
 2. Get those staged changes out of staging and make the necessary changes you wished to get in that commit
-3. Stage back all the changes 
+3. Stage back all the changes
 4. Amend the commit
 
-```bash 
+```bash
 git commit --amend
 ```
+
 This will update the commit message and include new changes.
 
-5. Force push the updated commit, 
+5. Force push the updated commit,
 
 Since this rewrites history, you need to force push:
 
@@ -1165,8 +1168,7 @@ git tag -d v1.4-lw
 git push origin --delete v1.4
 ```
 
-
-## 24) Rebasing your branch with the base branch 
+## 24) Rebasing your branch with the base branch
 
 1. To rebase your branch on the latest main and maintain a linear history, run:
 
@@ -1187,9 +1189,9 @@ git rebase --continue
 git push origin <your-branch> --force
 ```
 
-## 25) Get back committed changes from commit level to stage level 
+## 25) Get back committed changes from commit level to stage level
 
-- Say you have a series of linear commits like the following 
+- Say you have a series of linear commits like the following
 
 ```bash
 62a1b7d (HEAD -> updates, origin/updates) chore: fixed messed up serial numbers
@@ -1204,28 +1206,35 @@ git push origin <your-branch> --force
 git reset 2675d8d
 ```
 
-- Now your git history will look like : 
+- Now your git history will look like :
 
-```bash 
+```bash
 2675d8d (origin/master, origin/HEAD) Merge pull request #2 from meetmakwana19/updates
 .
 .
 ```
+
 - Now your committed changes will be brought back to the staging level from where you can bring it out of stag and edit and restage and commit back.
 
-## 26) Amend commited changes : 
+## 26) Amend commited changes :
 
 1. Find the Commit ID
 
 ```bash
 git log --oneline
 ```
-2. Start an Interactive Rebase Using the Commit ID
+
+2. Start an interactive rebase from BEFORE the commit
+
+You must rebase starting from the parent of the commit you want to edit:
 
 ```bash
-git rebase -i ghi789
+git rebase -i ghi789^
 ```
-3. Modify the Commit, A text editor will open showing a list of commits:
+
+( `ghi789^` means "the parent of ghi789" )
+
+1. Modify the Commit, A text editor will open showing a list of commits:
 
 ```bash
 edit ghi789 Commit message 3  <-- Change "pick" to "edit"
@@ -1238,35 +1247,82 @@ Press `i` to enter in insert mode of the editor. Change `pick` to `edit` by typi
 Save and exit by pressing `Esc` key and the typing `:wq` and `Enter`.
 
 4. Make Changes & Amend the Commit
+
    1. Now Git will stop at that commit.
    2. Modify your files (if needed)
    3. Stage the changes
    4. Now you can amend the changes with a new commit message or the old one itself
+
       1. For new message :
-         
+
          ```bash
          git commit --amend -m "Updated commit message or changes"
-         
+
          ```
+
       2. For old message :
-         
+
          ```bash
          git commit --amend --no-edit
-         
          ```
+
+         or simply
+
+         ```bash
+         git commit --amend
+         ```
+
    5. Continue the rebase:
-      
+
       ```bash
       git rebase --continue
       ```
 
-5. Since this rewrites history, force push 
+5. Since this rewrites history, force push
 
 ```bash
 git push --force
 ```
 
+or if you want a safer force push (only overwriting if you’re up-to-date), use:
+
+```bash
+git push --force-with-lease
+```
+
 ---
+
+## 27) Amend commited changes of last commit :
+
+- Even if you already pushed, you can still amend the last commit and force push. (no matter local or remote HEAD commit you wish to change)
+
+Steps :
+
+1. Make your changes to the file(s) locally.
+2. Stage the changes
+3. Amend the last commit:
+
+```bash
+git commit --amend
+```
+
+It will open your commit message editor.
+
+You can keep the same message or edit it if you want.
+
+Save and close the editor.
+
+4. Since this rewrites history, force push
+
+```bash
+git push --force
+```
+
+or if you want a safer force push (only overwriting if you’re up-to-date), use:
+
+```bash
+git push --force-with-lease
+```
 
 ## Error :Object file is empty ? .git is corrupt ?
 
