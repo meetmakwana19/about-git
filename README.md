@@ -1324,7 +1324,7 @@ or if you want a safer force push (only overwriting if you’re up-to-date), use
 git push --force-with-lease
 ```
 
-## Error :Object file is empty ? .git is corrupt ?
+## 28) Error : Object file is empty ? `.git` is corrupt ?
 
 Error can look something like this :
 
