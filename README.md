@@ -1324,7 +1324,7 @@ or if you want a safer force push (only overwriting if you’re up-to-date), use
 git push --force-with-lease
 ```
 
-## Error :Object file is empty ? .git is corrupt ?
+## 28) Error : Object file is empty ? `.git` is corrupt ?
 
 Error can look something like this :
 
@@ -1391,6 +1391,39 @@ git for-each-ref --format="%(refname)" | while read ref; do
     git show-ref --quiet --verify $ref 2>/dev/null || git update-ref -d $ref
 done
 ```
+
+## 29) Force a Feature Branch to Match main Exactly (Discard All Conflicts & History)
+
+> This is the safest and most common approach when you explicitly want the feature branch to match main.
+
+Steps :
+
+```bash
+# Make sure main is up to date
+git checkout main
+git pull origin main
+
+# Switch to feature branch
+git checkout feature-branch
+
+# Force feature branch to match main exactly
+git reset --hard origin/main
+
+# if remote exists
+git push origin feature-branch --force
+```
+
+Result :
+
+- feature-branch now points to the same commit as main
+- Working tree + index are identical
+- Conflicts are completely bypassed
+
+Why this works
+
+- Resetting hard moves the branch pointer to main
+- Git does not merge → so no conflicts
+- History is rewritten so both branches now share the same commit graph
 
 # Simple Walkthrough for Pushing
 
