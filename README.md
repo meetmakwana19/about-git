@@ -1425,6 +1425,34 @@ Why this works
 - Git does not merge → so no conflicts
 - History is rewritten so both branches now share the same commit graph
 
+## 30) Switching to a Remote Branch in a Shallow / Single-Branch Clone
+
+**Issue :**
+The repository was originally cloned as a shallow and likely `--single-branch` clone (only `main`).
+
+**Because of this:**
+
+1. Git did not create remote-tracking refs (`origin/<branch>`) for other branches.
+2. Running `git fetch origin feature-branch` fetched the data only into FETCH_HEAD, not into `origin/feature-branch`.
+3. As a result, git checkout `origin/feature-branch` failed because that ref did not exist locally.
+
+**Solution** :
+Explicitly fetch the branch and store it as a remote-tracking branch, then create a local branch from it.
+
+```bash
+git fetch origin feature-branch:refs/remotes/origin/feature-branch
+git checkout -b feature-branch origin/feature-branch
+```
+
+**Why this worked :**
+
+- The first command manually created origin/feature-branch in the local repo (bypassing --single-branch limitations).
+- The second command:
+  - Created a local branch
+  - Pointed it to the latest commit on the remote branch
+  - Set proper upstream tracking
+- After this, the branch behaves like a normal Git branch (git pull works as expected).
+
 # Simple Walkthrough for Pushing
 
 ## Do the following when understood all of the above steps
