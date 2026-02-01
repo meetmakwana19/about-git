@@ -275,10 +275,13 @@ SO TO PUSH THE LOCAL REPO TO GITHUB DO THE FOLLOWING :**
    ```
 
 3. To generate Agent pid (Execute this command in git bash if using Windows)
+
    ```bash
    eval "$(ssh-agent -s)"
    ```
+
    - Add private key to the ssh agent, change directory to the `.ssh` folder and try to run the folder command.
+
    ```bash
    ssh-add ~/.ssh/id_ed25519
    ```
@@ -913,7 +916,6 @@ git rebase -i HEAD~3
 ```
 
 2. Edit the Commits
-
    1. In the editor, you'll see something like this:
    2. The commits will be arranges in a fashion of newest to be at the bottom.
 
@@ -935,7 +937,6 @@ git rebase -i HEAD~3
    5. Save and close the editor by pressing `esc` key and the typing `:wq` and press `Entern`.
 
 3. Amend Each Commit
-
    1. Git will stop at each commit, allowing you to amend it like :
 
    ```bash
@@ -1049,6 +1050,12 @@ git stash
 git stash save cool_name
 ```
 
+- Stash all the changes including new untracked files
+
+```
+git stash -u
+```
+
 - Listing the available stashes
 
 ```
@@ -1061,10 +1068,22 @@ git stash list
 git stash apply `index`
 ```
 
-- TO get back the stashed changes
+- To get back the stashed changes
 
 ```
 git stash pop
+```
+
+- To stash only staged (indexed) files
+
+```
+git stash push --staged
+```
+
+- To stash only unstaged changes (keep staged)
+
+```
+git stash push --keep-index
 ```
 
 ## 22) Commit in the past
@@ -1076,7 +1095,7 @@ git commit --date='year-month-day hour:minutes:seconds' -m "message"
 So it would look something like this:
 
 ```bash
-git commit --date='2024-07-11 12:12:00' -m "message"
+git commit --date='2026-02-01 12:12:00' -m "message"
 ```
 
 ## 23) Tags
@@ -1247,12 +1266,10 @@ Press `i` to enter in insert mode of the editor. Change `pick` to `edit` by typi
 Save and exit by pressing `Esc` key and the typing `:wq` and `Enter`.
 
 4. Make Changes & Amend the Commit
-
    1. Now Git will stop at that commit.
    2. Modify your files (if needed)
    3. Stage the changes
    4. Now you can amend the changes with a new commit message or the old one itself
-
       1. For new message :
 
          ```bash
