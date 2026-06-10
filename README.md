@@ -1470,6 +1470,56 @@ git checkout -b feature-branch origin/feature-branch
   - Set proper upstream tracking
 - After this, the branch behaves like a normal Git branch (git pull works as expected).
 
+## 31) Reorder / Swap Commits using Interactive Rebase
+
+If you want to change the order of commits in your branch history, use an interactive rebase.
+
+Example :
+
+Before :
+
+```bash
+feat: Feature A
+chore: Tooling changes (HEAD)
+```
+
+To swap the order of the last 2 commits :
+
+```bash
+git rebase -i HEAD~2
+```
+
+An editor will open:
+
+```bash
+pick abc123 Feature A
+pick def456 Tooling changes
+```
+
+Swap the lines:
+
+```bash
+pick def456 Tooling changes
+pick abc123 Feature A
+```
+
+Save and exit the editor.
+
+Result :
+
+```bash
+chore: Tooling changes
+feat: Feature A (HEAD)
+```
+
+⚠ Reordering commits rewrites history and creates new commit IDs (SHAs).
+
+If the branch was already pushed to a remote repository, update it with:
+
+```bash
+git push --force-with-lease
+```
+
 # Simple Walkthrough for Pushing
 
 ## Do the following when understood all of the above steps
