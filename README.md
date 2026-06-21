@@ -1520,6 +1520,68 @@ If the branch was already pushed to a remote repository, update it with:
 git push --force-with-lease
 ```
 
+## 32) Cherry-pick a Range of Commits
+
+If the commits are consecutive (in a straight line), you can cherry-pick them as a range.
+
+### Option 1: Cherry-pick a commit range
+
+Suppose your history is:
+
+```text
+A -- B -- C -- D -- E -- F
+          ^         ^
+       start      end
+```
+
+To cherry-pick commits `C`, `D`, `E`:
+
+```bash
+git cherry-pick C^..E
+```
+
+The `^` means "parent of C", so Git picks everything from `C` through `E` inclusive.
+
+Example:
+
+```bash
+git cherry-pick a1b2c3d^..e5f6g7h
+```
+
+---
+
+### Option 2: Cherry-pick multiple commits explicitly
+
+```bash
+git cherry-pick C D E
+```
+
+Example:
+
+```bash
+git cherry-pick a1b2c3d b2c3d4e c3d4e5f
+```
+
+Useful when the commits are not contiguous.
+
+---
+
+### Option 3: Cherry-pick all commits after a specific commit
+
+If you want all commits from `C` up to your current `HEAD`:
+
+```bash
+git cherry-pick C..HEAD
+```
+
+⚠ Note: This excludes `C` itself.
+
+To include `C`:
+
+```bash
+git cherry-pick C^..HEAD
+```
+
 # Simple Walkthrough for Pushing
 
 ## Do the following when understood all of the above steps
