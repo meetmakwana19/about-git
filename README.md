@@ -311,6 +311,14 @@ If things are not working out [check this](https://www.codewithharry.com/videos/
 4. Now your `.ssh/` folder has 2 private 2 public keys for 2 different github accounts.
 5. Make a `config` file without any file extensions in your `.ssh/` folder and write the following into it :
 
+```bash
+touch ~/.ssh/config
+nano ~/.ssh/config
+cat ~/.ssh/config
+```
+
+file contents : 
+
 ```
 # Default account (main account)
 Host github.com
